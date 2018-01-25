@@ -11,6 +11,17 @@ $(function() {
   }
   initSort();
 
+  function initSortCard() {
+    $(".list-cards").sortable({
+      cursor: "move",
+      connectWith: ".list-cards",
+      helper: "clone",
+      placeholder: "cards",
+      revert: true
+    });
+  }
+  initSortCard();
+
   function addList(event) {
     event.preventDefault(); // Don't actually submit the form, silly
 
