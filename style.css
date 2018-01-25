@@ -1,10 +1,30 @@
 html,body {
     padding: 0;
     margin: 0;
+    height: 100%;
+    width: 100%;
 }
 
+.container.olive {
+    background:olive;
+    color:white;
+}
 
 .container {
     display: grid;
     grid-template-columns: repeat(4,1fr);
+    grid-gap: 3px;
+}
+
+.card {
+    background-color: green;
+    color:white;
+    height: 15rem;
+    
+}
+.col {
+    background:blue;
+}
+h2 {
+    color:white;
 }
