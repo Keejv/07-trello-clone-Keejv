@@ -7,29 +7,21 @@
     <title>jQuery UI - Trello Clone (yay!)</title>
 
     <!-- Optionally include jquery ui css here -->
-    <!-- https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css"> 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
+  
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="hide" id="dialog" title="Card info">
-        <p>Save card info</p> 
+    <div class="hide" id="dialog" title="Update your card">
         <form class="input-info" action="index.html">
-            <input id="test" type="text" name="title" placeholder="Save info on the card" >
+            <input id="test" type="text" name="title" placeholder="Update card info" >
         </form>    
     </div>
 
-    <!-- <div id="add_dialog" title="New Entry">
-        <form >
-          <p>
-          Name:<input type="text" name="name" /></p>
-       </form>
-      </div> -->
-
-
+    <input type="text" id="datepicker">
 
     <div id="dialog-overlay" class="hide">
         

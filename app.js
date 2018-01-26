@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   function initSort() {
     $(".column").sortable({
       cursor: "move",
@@ -52,69 +52,80 @@ $(function() {
     modal: true,
     buttons: {
       Save: addList,
-      Cancel: function() {
+      Cancel: function () {
         dialog.dialog("close");
       }
     }
   });
 
-  $("#new-list").click(function() {
+  $("#new-list").click(function () {
     dialog.dialog("open");
   });
 
-  $("body").on("click", ".list-header .delete", function(event) {
+  $("body").on("click", ".list-header .delete", function (event) {
     $(event.target).closest(".column").remove();
   });
 
-  $(".new-card").submit(function(event) {
+  $(".new-card").submit(function (event) {
     event.preventDefault(); // Don't actually submit the form, silly
     var formData = $(event.target).serializeArray();
     $(event.target).find("input").val("");
 
     var newCard = `<li class="card">
         <span class="card-title">${formData[0].value}</span>
-        <button class="button delete">X</button>  
+        <span class="card-title">${formData[0].value}</span>
+        <button class="button delete">X</button>    
         <button class="button info">i</button>   
     </div>`;
 
     $(event.target).closest(".add-new").before(newCard);
   });
 
-  $("body").on("click", ".list-cards .card .delete", function(event) {
+  $("body").on("click", ".list-cards .card .delete", function (event) {
     $(event.target).parent().remove();
   });
 
   $(document).on({
-    click: function()
-    {
+    click: function () {
       $('#dialog-overlay').removeClass('hide');
       $('#dialog')
         .data("cardEl", $(event.target).parent()) // The magic
         .dialog({
-          open: function() {
+          open: function () {
             $(this).find('input').val($(this).data().cardEl.find('.card-title').text());
           },
           buttons: {
-            Save: function() {
+            Save: function () {
               $(this).data().cardEl.find('.card-title').text($(this).find('form').serializeArray()[0].value);
               $(this).dialog("close");
             },
-            Cancel: function() {
+            Cancel: function () {
               $(this).dialog("close");
             }
           }
         });
 
-      $('.ui-button').on('click', function() {
+      $('.ui-button').on('click', function () {
         $('#dialog-overlay').addClass('hide');
-        
+
       });
 
 
-      $('#dialog-overlay').on('click', function() {
+      $('#dialog-overlay').on('click', function () {
         $('#dialog').dialog('close');
         $(this).addClass('hide');
       });
-      
-    }}, '.info');
+
+    }
+  }, '.info');
+
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      showOn: "button",
+      buttonImage: "calendar.gif",
+      buttonImageOnly: true,
+      buttonText: "Select date"
+    });
+  } );
+
 });
