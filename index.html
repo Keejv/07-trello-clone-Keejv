@@ -15,9 +15,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="hide" id="dialog" title="basic dialog">
-        <p>testa</p>   
+    <div class="hide" id="dialog" title="Card info">
+        <p>Save card info</p> 
+        <form class="input-info" action="index.html">
+            <input id="test" type="text" name="title" placeholder="Save info on the card" >
+        </form>    
     </div>
+
+    <!-- <div id="add_dialog" title="New Entry">
+        <form >
+          <p>
+          Name:<input type="text" name="name" /></p>
+       </form>
+      </div> -->
+
+
+
     <div id="dialog-overlay" class="hide">
         
     </div>
@@ -30,7 +43,7 @@
                 </div>
                 <ul class="list-cards">
                     <li class="card">
-                        Card #1
+                        <span class="card-title">Card #1</span>
                         <button class="button delete">X</button>
                         <button class="button info">i</button>
                     </li>
@@ -51,7 +64,7 @@
                 </div>
                 <ul class="list-cards">
                     <li class="card">
-                        Card #2
+                        <span class="card-title">Card #2</span>
                         <button class="button delete">X</button>
                         <button class="button info">i</button>
                     </li>
@@ -72,7 +85,7 @@
                 </div>
                 <ul class="list-cards">
                     <li class="card">
-                        Card #3
+                        <span class="card-title">Card #3</span>
                         <button class="button delete">X</button>
                         <button class="button info">i</button>
                     </li>

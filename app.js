@@ -72,7 +72,7 @@ $(function() {
     $(event.target).find("input").val("");
 
     var newCard = `<li class="card">
-        <span>${formData[0].value}</span>
+        <span class="card-title">${formData[0].value}</span>
         <button class="button delete">X</button>  
         <button class="button info">i</button>   
     </div>`;
@@ -88,13 +88,33 @@ $(function() {
     click: function()
     {
       $('#dialog-overlay').removeClass('hide');
-      $('#dialog').dialog();
+      $('#dialog')
+        .data("cardEl", $(event.target).parent()) // The magic
+        .dialog({
+          open: function() {
+            $(this).find('input').val($(this).data().cardEl.find('.card-title').text());
+          },
+          buttons: {
+            Save: function() {
+              $(this).data().cardEl.find('.card-title').text($(this).find('form').serializeArray()[0].value);
+              $(this).dialog("close");
+            },
+            Cancel: function() {
+              $(this).dialog("close");
+            }
+          }
+        });
+
       $('.ui-button').on('click', function() {
         $('#dialog-overlay').addClass('hide');
+        
       });
+
+
       $('#dialog-overlay').on('click', function() {
         $('#dialog').dialog('close');
         $(this).addClass('hide');
       });
+      
     }}, '.info');
 });

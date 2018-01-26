@@ -44,6 +44,7 @@ input {
 
 .board {
     height: 100vh;
+    display: flex;
 }
 
 .column {
