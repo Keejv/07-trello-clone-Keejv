@@ -5,7 +5,7 @@ $(function() {
       connectWith: ".column",
       handle: ".list-header",
       helper: "clone",
-      placeholder: "sortable-placeholder",
+      placeholder: "ui-sortable-placeholder",
       revert: true
     });
   }
@@ -16,7 +16,7 @@ $(function() {
       cursor: "move",
       connectWith: ".list-cards",
       helper: "clone",
-      placeholder: "cards",
+      placeholder: "placeholder-cards",
       revert: true
     });
   }
@@ -72,8 +72,9 @@ $(function() {
     $(event.target).find("input").val("");
 
     var newCard = `<li class="card">
-        ${formData[0].value}
-        <button class="button delete">X</button>   
+        <span>${formData[0].value}</span>
+        <button class="button delete">X</button>  
+        <button class="button info">i</button>   
     </div>`;
 
     $(event.target).closest(".add-new").before(newCard);
@@ -82,4 +83,15 @@ $(function() {
   $("body").on("click", ".list-cards .card .delete", function(event) {
     $(event.target).parent().remove();
   });
+  
+  $(document).on({
+    click: function()
+    {
+      $('#dialog-overlay').removeClass('hide');
+      $('#dialog').dialog();
+      $('.ui-button').on('click', function() {
+        $('#dialog-overlay').addClass('hide');
+      });
+    }
+  }, '.info');
 });
