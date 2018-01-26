@@ -83,7 +83,7 @@ $(function() {
   $("body").on("click", ".list-cards .card .delete", function(event) {
     $(event.target).parent().remove();
   });
-  
+
   $(document).on({
     click: function()
     {
@@ -92,6 +92,9 @@ $(function() {
       $('.ui-button').on('click', function() {
         $('#dialog-overlay').addClass('hide');
       });
-    }
-  }, '.info');
+      $('#dialog-overlay').on('click', function() {
+        $('#dialog').dialog('close');
+        $(this).addClass('hide');
+      });
+    }}, '.info');
 });
