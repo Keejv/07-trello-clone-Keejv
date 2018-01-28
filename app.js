@@ -7,7 +7,7 @@ $(function () {
       helper: "clone",
       placeholder: "ui-sortable-placeholder",
       revert: true
-    });
+    });       //sorterar tables
   }
   initSort();
 
@@ -18,7 +18,7 @@ $(function () {
       helper: "clone",
       placeholder: "placeholder-cards",
       revert: true
-    });
+    }); //sorterar korten
   }
   initSortCard();
 
@@ -56,10 +56,10 @@ $(function () {
         dialog.dialog("close");
       }
     }
-  });
+  }); //lägg till ett nytt tabel
 
   $("#new-list").click(function () {
-    dialog.dialog("open");
+    dialog.dialog("open");  //öppnar table create dialog
   });
 
   $("body").on("click", ".list-header .delete", function (event) {
@@ -73,9 +73,8 @@ $(function () {
 
     var newCard = `<li class="card">
         <span class="card-title">${formData[0].value}</span>
-        <span class="card-title">${formData[0].value}</span>
         <button class="button delete">X</button>    
-        <button class="button info">i</button>   
+        <button class="button info">i</button>  
     </div>`;
 
     $(event.target).closest(".add-new").before(newCard);
@@ -124,7 +123,10 @@ $(function () {
       showOn: "button",
       buttonImage: "calendar.gif",
       buttonImageOnly: true,
-      buttonText: "Select date"
+      buttonText: "Select date",
+      onSelect: function() { 
+        var dateObject = $(this).datepicker('getDate');
+    }
     });
   } );
 
