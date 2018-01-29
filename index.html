@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery UI - Trello Clone (yay!)</title>
+
+    <!-- Optionally include jquery ui css here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+        <iframe id="ididnot" width="560" height="315" src="https://www.youtube.com/embed/dXlao2KNYjQ?" 
+    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <h1 id="effect">Trello lol board</h1>
+    <div class="hide" id="dialog" title="Update your card">
+        <div id="tabs">
+            <ul>
+                <li>
+                    <a href="#tabs-1">Edit Update</a>
+                </li>
+                <li>
+                    <a href="#tabs-2">Set Date</a>
+                </li>
+            </ul>
+            <div id="tabs-1">
+                <form class="input-info" action="index.html">
+                    <input id="test" type="text" name="title" placeholder="Update card info">
+                </form>
+            </div>
+            <div id="tabs-2">
+                <form class="datepicker" action="#">
+                    <input type="text" name="due" id="datepicker">
+                    <!-- Varför är kort title by default inskrivet i date formen? -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="dialog-overlay" class="hide">
+
+    </div>
+    <div class="board">
+        <div class="column">
+            <div class="list">
+                <div class="list-header">
+                    Todo
+                    <button class="button delete">X</button>
+                </div>
+                <ul class="list-cards">
+                    <li class="card">
+                        <span class="card-title">Card #1</span>
+                        <span class="card-due"></span>
+                        <button class="button delete">X</button>
+                        <button class="button info">i</button>
+                    </li>
+                    <li class="add-new">
+                        <form class="new-card" action="index.html">
+                            <input type="text" name="title" placeholder="Please name the card" />
+                            <button class="button add">Add new card</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <div class="list">
+                <div class="list-header">
+                    Doing
+                    <button class="button delete">X</button>
+                </div>
+                <ul class="list-cards">
+                    <li class="card">
+                        <span class="card-title">Card #2</span>
+                        <span class="card-due"></span>
+                        <button class="button delete">X</button>
+                        <button class="button info">i</button>
+                    </li>
+                    <li class="add-new">
+                        <form class="new-card" action="index.html">
+                            <input type="text" name="title" placeholder="Please name the card" />
+                            <button class="button add">Add new card</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <div class="list">
+                <div class="list-header">
+                    Done
+                    <button class="button delete">X</button>
+                </div>
+                <ul class="list-cards">
+                    <li class="card">
+                        <span class="card-title">Card #3</span>
+                        <span class="card-due"></span>
+                        <button class="button delete">X</button>
+                        <button class="button info">i</button>
+                    </li>
+                    <li class="add-new">
+                        <form class="new-card" action="index.html">
+                            <input type="text" name="title" placeholder="Please name the card" />
+                            <button class="button add">Add new card</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <button id="new-list" class="button">Add new list</button>
+        </div>
+    </div>
+
+    <div id="list-creation-dialog" title="Create new list" style="height: 40px">
+        <form>
+            <input type="text" name="title" placeholder="List title" />
+        </form>
+    </div>
+</body>
+<script src="app.js"></script>
+
+</html>
