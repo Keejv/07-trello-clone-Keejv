@@ -7,7 +7,7 @@ $(function () {
       helper: "clone",
       placeholder: "ui-sortable-placeholder",
       revert: true
-    });       //sorterar tables
+    }); //sorterar tables
   }
   initSort();
 
@@ -59,7 +59,7 @@ $(function () {
   }); //lägg till ett nytt tabel
 
   $("#new-list").click(function () {
-    dialog.dialog("open");  //öppnar table create dialog
+    dialog.dialog("open"); //öppnar table create dialog
   });
 
   $("body").on("click", ".list-header .delete", function (event) {
@@ -73,6 +73,7 @@ $(function () {
 
     var newCard = `<li class="card">
         <span class="card-title">${formData[0].value}</span>
+        <span class="card-due"></span>
         <button class="button delete">X</button>    
         <button class="button info">i</button>  
     </div>`;
@@ -88,14 +89,26 @@ $(function () {
     click: function () {
       $('#dialog-overlay').removeClass('hide');
       $('#dialog')
-        .data("cardEl", $(event.target).parent()) // The magic
+        .data("cardEl", $(event.target).parent()) // This magically sets the form we clicked on, as a data object ON the dialog
         .dialog({
           open: function () {
-            $(this).find('input').val($(this).data().cardEl.find('.card-title').text());
+            this.clickedCardEl = $(this).data().cardEl;
+            var dialogTitelInput = $(this).find('input[name="title"]');
+            var dialogDueInput = $(this).find('input[name="due"]');
+
+            // Load values from the card we clicked into the dialog inputs
+            dialogTitelInput.val(clickedCardEl.find('.card-title').text()); 
+            dialogDueInput.val(clickedCardEl.find('.card-due').text());
           },
           buttons: {
             Save: function () {
-              $(this).data().cardEl.find('.card-title').text($(this).find('form').serializeArray()[0].value);
+              var newDue = $("#datepicker").datepicker("option", "dateFormat", "yy-mm-dd" ).val();
+              var newTitle = $(this).find('form').serializeArray()[0].value;
+              // On the card we clicked set the title to the new value 
+              this.cardEl.find('.card-title').text(newTitle);
+              // On the card we clicked set the due date to the new value
+              this.cardEl.find('.card-due').text(newDue);
+              // Close
               $(this).dialog("close");
             },
             Cancel: function () {
@@ -118,16 +131,17 @@ $(function () {
     }
   }, '.info');
 
-  $( function() {
-    $( "#datepicker" ).datepicker({
+  $(function () {
+    $("#datepicker").datepicker({
+      dateFormat: 'yy-mm-dd',
       showOn: "button",
       buttonImage: "calendar.gif",
       buttonImageOnly: true,
       buttonText: "Select date",
-      onSelect: function() { 
+      onSelect: function () {
         var dateObject = $(this).datepicker('getDate');
-    }
+      }
     });
-  } );
+  });
 
 });
