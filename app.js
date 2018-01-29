@@ -95,19 +95,19 @@ $(function () {
             this.clickedCardEl = $(this).data().cardEl;
             var dialogTitelInput = $(this).find('input[name="title"]');
             var dialogDueInput = $(this).find('input[name="due"]');
-
+            
             // Load values from the card we clicked into the dialog inputs
-            dialogTitelInput.val(clickedCardEl.find('.card-title').text()); 
-            dialogDueInput.val(clickedCardEl.find('.card-due').text());
+            dialogTitelInput.val(this.clickedCardEl.find('.card-title').text()); 
+            dialogDueInput.val(this.clickedCardEl.find('.card-due').text());
           },
           buttons: {
             Save: function () {
               var newDue = $("#datepicker").datepicker("option", "dateFormat", "yy-mm-dd" ).val();
               var newTitle = $(this).find('form').serializeArray()[0].value;
               // On the card we clicked set the title to the new value 
-              this.cardEl.find('.card-title').text(newTitle);
+              this.clickedCardEl.find('.card-title').text(newTitle);
               // On the card we clicked set the due date to the new value
-              this.cardEl.find('.card-due').text(newDue);
+              this.clickedCardEl.find('.card-due').text(newDue);
               // Close
               $(this).dialog("close");
             },
