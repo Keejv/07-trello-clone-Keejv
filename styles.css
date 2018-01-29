@@ -236,6 +236,15 @@ input {
   height: 25px;
 }
 
+ h1:hover {
+  color: aqua;
+  cursor: pointer;
+}
+
+#ididnot {
+  display: none;
+}
+
 #datebutton {
     position: absolute;
     top: 6px;

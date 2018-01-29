@@ -58,8 +58,9 @@ $(function () {
     }
   }); //lägg till ett nytt tabel
 
-  $("#new-list").click(function () {
-    dialog.dialog("open"); //öppnar table create dialog
+  $("#new-list").on('click', function () {
+    $('#ididnot').removeAttr('id'); //öppnar table create dialog
+    alert('Sorry this function does not work, please enjoy the video instead')
   });
 
   $("body").on("click", ".list-header .delete", function (event) {
@@ -147,5 +148,13 @@ $(function () {
   $('#tabs').tabs({
     event: "mouseover"
 });
+
+   $('#effect').on('click', function() {
+        $( "#effect" ).animate({
+            backgroundColor: "#000000",
+            color: "#ffffff",
+            width: 500
+          }, 1000 );
+    });
 
 });
