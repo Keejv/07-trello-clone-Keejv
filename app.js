@@ -157,4 +157,27 @@ $(function () {
           }, 1000 );
     });
 
+    $.widget('bg.changer', {
+      options: {
+        color: 'black'
+      },
+      _create: function () {
+        this._refresh();
+      },
+      _refresh: function () {
+        $('body').css('background-color', this.options.color)
+      },
+      change: function (value) {
+        this.options.color = this.options.color === 'black' ? 'yellow' : 'black' ;
+        this._refresh();
+      }
+    });
+    
+    $('body').changer();
+    
+    
+    $('body').on('click', '#bg-color', function() {
+      $('body').changer('change');
+    })
+
 });
